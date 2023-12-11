@@ -1,0 +1,67 @@
+https://kjunghoan-aws-training-general-iam.signin.aws.amazon.com/console
+https://kjunghoan-aws-training-production-iam.signin.aws.amazon.com/console
+
+At a high level an AWS account is a container for identities(users or whatever you would use to login to systems , etc) and AWS resources
+
+Each has an identifier (The account root  user) which has full control over the AWS account and any resources created withing the account and can't be restricted.
+
+AWS is a pay as you consume model
+
+IAMs(Identity and Access Management) users groups and roles can also be created and given full or limited permissions under the account.IAMs start with no permissions. later will talk about cross-account permissions.
+
+AWS accounts are good for partitioning the access that specific teams and users have to bolster security ie(production account, testing account, teams, products, devops, etc)
+
+*Setting up multiple AWS accounts*
+*Management account / general account
+*set up spending alerts to make sure we aren't getting charged without knowledge
+*set up an Admin IAM(IAMADMIN) for management account
+*do the same thing for a production account 
+
+MFA
+Multi-Factor Authentication (MFA)
+
+. Usernames and Passwords - if leaked, anyone can be you!
+
+· Factors - different pieces of evidence which prove identity
+
+· Knowledge - Something you know, usernames, passwords
+
+· Possession - Something you have, bank card, MFA device/app
+
+· Inherent - Something you are .. fingerprint, face, voice or iris
+
+· Location - A location (physical), which network (corp or wifi)
+
+. More factors means more security & harder to fake
+
+So we're going to step through the process
+
+
+IAMs are globally resilient services that have their own databases
+when generating  IAM instances it is only for your AWS account and the root user trusts this IAM
+IAM Has all authorisation (permissions) the account and account root user has
+
+IAM basics:
+
+Iam lets us create 3 types of IAMs:
+users
+  IDs which represent humans or applications that need your account
+groups
+  Collections of related users e.g. development team, finance, HR
+roles
+  Can be used by aws services or for granting external access for you account
+  used when wanting to grant access to services in your account to an uncertain number of entities
+
+IAM policies / policy
+  can be used to allow or deny access to services when they're attached to uses groups or roles
+
+IAMs act as:
+  Identity providers(IDP)
+  Authentication
+  Authorization
+
+* No cost
+* Global service / Global resilience
+* Allow or deny it's identities on its AWS accounts
+* no direct control on external accounts or users
+* Identity federation and MFA
